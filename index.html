@@ -12,12 +12,19 @@
 			scene.start();
 		} //end init
 		function update(){
+			scene.updateMousePos;
+			var x = document.getElementById("x");
+			var y = document.getElementById("y");
+			x.innerHTML = document.mouseX;
+			y.innerHTML = document.mouseY;	
+			
 		} // end update
 	</script>
 </head>
 
 <body onload="init()">
-
+	<p id="x"></p>
+	<p id="y"></p>
 </body>
 </html>
 
