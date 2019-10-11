@@ -3,14 +3,20 @@
 // Mouse objec that tracks that state of the mouse
 function Mouse(){
 	this.updatePos = function(e){
-		this.x = e.pageX;
-		this.y = e.pageY;
+		this.mouseX = e.pageX; //document
+		this.mouseY = e.pageY; //document
+	}
+	this.setX = function(){
+		this.x = document.mouseX;	
+	}
+	this.setY = function(){
+		this.y = document.mouseY;	
 	}
 	this.getX = function(){
-		return this.x;	
+		return this.x;
 	}
 	this.getY = function(){
-		return this.y;	
+		return this.y;
 	}
 	//state, clicked or not
 }
@@ -21,6 +27,7 @@ function Mouse(){
 
 function Scene(){
 	this.canvas = document.createElement('canvas');
+	this.mouse = new Mouse();
 	this.canvas.style.backgroundColor = "black";
 	document.body.appendChild(this.canvas);
 	this.context = this.canvas.getContext("2d");
@@ -30,7 +37,7 @@ function Scene(){
 	
 	this.start = function(){
 		this.intID = setInterval(localUpdate, 50);
-		document.onmousemove = this.updateMousePos;
+		document.onmousemove = this.mouse.updatePos;
 	} // end start
 	
 	//set the background color using r,g,b values
@@ -39,11 +46,6 @@ function Scene(){
 		this.canvas.style.backgroundColor = color;
 	}
 	
-	this.updateMousePos = function(e){
-		this.mouseX = e.pageX; //document mouseX
-		this.mouseY = e.pageY; //document mouseY
-		console.log(e.pageX,e.pageY);
-	}
 
 	
 	

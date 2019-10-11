@@ -4,27 +4,13 @@
 <head>
 	<meta charset=utf-8>
 	<title>Graphics Demo</title>
-	<script type="text/javascript" src="engine.js"></script>
-	<script type="text/javascript"> 
-		var scene;
-		function init(){
-			scene = new Scene();
-			scene.start();
-		} //end init
-		function update(){
-			scene.updateMousePos;
-			var x = document.getElementById("x");
-			var y = document.getElementById("y");
-			x.innerHTML = document.mouseX;
-			y.innerHTML = document.mouseY;	
-			
-		} // end update
-	</script>
 </head>
 
-<body onload="init()">
-	<p id="x"></p>
-	<p id="y"></p>
+<body>
+	<h1>Different Demos</h1>
+	<a href="mouse-position.html">Track Mouse Position</a>
 </body>
 </html>
+
+
 
