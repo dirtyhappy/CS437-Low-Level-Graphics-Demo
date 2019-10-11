@@ -1,0 +1,39 @@
+<html>
+<!doctype html>
+<html lang=en>
+<head>
+	<meta charset=utf-8>
+	<title>Track Mouse Position</title>
+	<style>
+		p { position:absolute;
+			transform:translate(0px, 600px);
+			}
+	</style>
+	<script type="text/javascript" src="engine.js"></script>
+	<script type="text/javascript"> 
+		var scene;
+		var drawing;
+		function init(){
+			scene = new Scene();
+			drawing = new Drawing(scene);
+			scene.start();
+		} //end init
+		function update(){
+			mouseUpdate();	
+			drawing.update();
+		} // end update
+		function mouseUpdate(){
+			scene.mouse.setX();
+			scene.mouse.setY();
+			scene.mouse.setState();
+			var test = document.getElementById("test");
+		} //end mouseUpdate
+	</script>
+</head>
+
+<body onload="init()">
+<p id="test"></p>
+</body>
+</html>
+
+
