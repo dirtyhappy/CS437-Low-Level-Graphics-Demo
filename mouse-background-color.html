@@ -1,0 +1,35 @@
+<html>
+<!doctype html>
+<html lang=en>
+<head>
+	<meta charset=utf-8>
+	<title>Track Mouse Position</title>
+	<script type="text/javascript" src="engine.js"></script>
+	<script type="text/javascript"> 
+		var scene;
+		var r;
+		var g;
+		var b;
+		function init(){
+			scene = new Scene();
+			scene.start();
+		} //end init
+		function update(){
+			mouseUpdate();	
+		} // end update
+		function mouseUpdate(){
+			scene.mouse.setX();
+			scene.mouse.setY();
+			r = scene.mouse.x % 255;
+			g = scene.mouse.y % 255;
+			b = (scene.mouse.x * scene.mouse.y) % 255
+			scene.setBackground(r,g,b);
+		}
+	</script>
+</head>
+
+<body onload="init()">
+</body>
+</html>
+
+
