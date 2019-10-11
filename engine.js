@@ -49,20 +49,29 @@ function Mouse(){
 // Scene object that holds a canvas
 
 
-function Scene(){
+function Scene(width, height){
+	this.width = width;
+	this.height = height;
 	this.canvas = document.createElement('canvas');
 	this.mouse = new Mouse();
 	this.canvas.style.backgroundColor = "black";
 	document.body.appendChild(this.canvas);
 	this.context = this.canvas.getContext("2d");
-	this.canvas.width = screen.width;
-	this.canvas.height = screen.height;
+	this.canvas.width = this.width;
+	this.canvas.height = this.height;
 	
 	this.mouseState = function(){
 		document.onmousemove = this.mouse.updatePos;
 		document.onmousedown = this.mouse.updateStateDown;
 		document.onmouseup = this.mouse.updateStateUp;
 	}	
+	
+	this.setSize = function(width,height){
+		this.width = width;
+		this.height = height;
+		this.canvas.width = width;
+		this.canvas.height = height;
+	}
 
 	this.start = function(){
 		this.intID = setInterval(localUpdate, 5);
@@ -88,9 +97,9 @@ function Drawing(scene){
 	this.beginY = null;
 	this.scene = scene;	
 	this.update = function(){
+		if(this.scene.mouse.isClicked){
 			this.beginX = this.scene.mouse.x;
 			this.beginY = this.scene.mouse.y;
-		if(this.scene.mouse.isClicked){
 			this.draw();	
 		}	
 	}
@@ -113,9 +122,9 @@ function Drawing(scene){
 
 	this.draw = function(){
 		context = this.scene.canvas.getContext('2d');
-		r = this.beginX%255;
-		g = this.beginY%255;
-		b = this.beginY-this.beginX%255;
+		r = (this.beginX) % 255;
+		g = (this.beginY) % 255;
+		b = (this.beginX - this.beginY) % 255;
 		color = "rgb("+r+","+g+","+b+")";
 		context.fillStyle = color;
 		this.drawEllipse(context, this.beginX, this.beginY, 15, 15);

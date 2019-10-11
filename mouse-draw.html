@@ -14,7 +14,7 @@
 		var scene;
 		var drawing;
 		function init(){
-			scene = new Scene();
+			scene = new Scene(800,600);
 			drawing = new Drawing(scene);
 			scene.start();
 		} //end init
@@ -26,13 +26,12 @@
 			scene.mouse.setX();
 			scene.mouse.setY();
 			scene.mouse.setState();
-			var test = document.getElementById("test");
 		} //end mouseUpdate
 	</script>
 </head>
 
 <body onload="init()">
-<p id="test"></p>
+<p id="info">Click and hold the mouse to draw</p>
 </body>
 </html>
 
