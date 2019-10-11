@@ -17,10 +17,17 @@
 		function mouseUpdate(){
 			scene.mouse.setX();
 			scene.mouse.setY();
+			scene.mouse.setState();
 			var x = document.getElementById("x");
 			var y = document.getElementById("y");
+			var state = document.getElementById("mouse-state");
 			x.innerHTML = scene.mouse.getX();
 			y.innerHTML = scene.mouse.getY();	
+			if (scene.mouse.isClicked == true){
+				state.innerHTML = "Mouse is Clicked";
+			}else{
+				state.innerHTML = "Mouse is not Clicked";
+			}
 		}
 	</script>
 </head>
@@ -28,6 +35,7 @@
 <body onload="init()">
 	<p id="x"></p>
 	<p id="y"></p>
+	<p id="mouse-state"></p>
 </body>
 </html>
 

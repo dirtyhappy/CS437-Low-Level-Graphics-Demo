@@ -18,7 +18,25 @@ function Mouse(){
 	this.getY = function(){
 		return this.y;
 	}
-	//state, clicked or not
+	
+	//state of the mouse
+	this.isClicked = false;
+	this.down = false;
+	this.updateStateDown = function(){
+		this.down = true;
+		this.clicked = true;
+	}
+	this.updateStateUp = function(){
+		this.down = false;
+		this.clicked = false;
+	}
+	this.setState = function(){
+		this.isClicked = document.clicked;	
+	}
+	this.getState = function(){
+		return this.isClicked;
+	}
+	
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,10 +52,15 @@ function Scene(){
 	this.canvas.width = 700;
 	this.canvas.height = 500;
 	
-	
+	this.mouseState = function(){
+		document.onmousemove = this.mouse.updatePos;
+		document.onmousedown = this.mouse.updateStateDown;
+		document.onmouseup = this.mouse.updateStateUp;
+	}	
+
 	this.start = function(){
 		this.intID = setInterval(localUpdate, 50);
-		document.onmousemove = this.mouse.updatePos;
+		this.mouseState();
 	} // end start
 	
 	//set the background color using r,g,b values
