@@ -90,9 +90,10 @@ function Drawing(scene){
 	this.update = function(){
 			this.beginX = this.scene.mouse.x;
 			this.beginY = this.scene.mouse.y;
+		if(this.scene.mouse.isClicked){
 			this.draw();	
-			}
-		
+		}	
+	}
 	this.drawEllipse = function(context, x, y, w, h){
 		var kappa = .5522848;
 		ox = (w/2) * kappa; //horizontal offset point
