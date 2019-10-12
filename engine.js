@@ -20,23 +20,18 @@ function Mouse(){
 	}
 	
 	//state of the mouse
-	this.isClicked = false;
-	this.down = false;
 	this.updateStateDown = function(e){
-		this.down = true;
 		this.mouseDownX = e.pageX;
 		this.mouseDownY = e.pageY;
 		this.clicked = true;
 	}
 	this.updateStateUp = function(e){
-		this.down = false;
 		this.mouseUpX = e.pageX;
 		this.mouseUpY = e.pageY;
 		this.clicked = false;
 	}
 	this.setState = function(){
 		this.isClicked = document.clicked;	
-		this.isDown = document.down;
 		this.downX = document.mouseDownX;
 		this.upX = document.mouseUpX;
 		this.downY = document.mouseDownY;
@@ -121,7 +116,7 @@ function Drawing(scene){
 	}
 
 	this.draw = function(){
-		context = this.scene.canvas.getContext('2d');
+		context = this.scene.context;
 		r = (this.beginX) % 255;
 		g = (this.beginY) % 255;
 		b = (this.beginX - this.beginY) % 255;
